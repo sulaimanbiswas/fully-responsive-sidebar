@@ -39,8 +39,8 @@ export default function InventoryLayout({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const minSize = isSmallScreen ? 60 : 15;
-  const maxSize = isSmallScreen ? 60 : 15;
+  const minSize = isSmallScreen ? 60 : 16;
+  const maxSize = isSmallScreen ? 60 : 18;
   const panelSize = isSmallScreen ? 60 : defaultLayout[0];
   const contentSize = isSmallScreen ? 40 : defaultLayout[1];
 
@@ -50,7 +50,7 @@ export default function InventoryLayout({
         direction="horizontal"
         onLayout={(sizes: number[]) => {
           document.cookie = `react-resizable-panels:layout:mail=${JSON.stringify(
-            sizes
+            sizes,
           )}`;
         }}
         className="h-full max-h-[800px] items-stretch"
@@ -64,23 +64,23 @@ export default function InventoryLayout({
           onCollapse={() => {
             setIsCollapsed(true);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              true
+              true,
             )}`;
           }}
           onResize={() => {
             setIsCollapsed(false);
             document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              false
+              false,
             )}`;
           }}
           className={cn(
             isCollapsed &&
-              "min-w-[50px] transition-all duration-300 ease-in-out"
+              "min-w-[50px] transition-all duration-300 ease-in-out",
           )}
         >
           <Link
             href="/"
-            className="bg-primary text-primary-foreground flex justify-center items-center h-12 "
+            className="flex h-12 items-center justify-center bg-primary text-primary-foreground"
           >
             {isCollapsed ? (
               <span className="text-lg font-semibold">I</span>
