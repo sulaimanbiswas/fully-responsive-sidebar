@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/components/Common/Header";
 import Sidebar from "@/components/Common/Sidebar";
 import {
   ResizableHandle,
@@ -20,7 +21,7 @@ interface LayoutProps {
 
 export default function InventoryLayout({
   children,
-  defaultLayout = [20, 80],
+  defaultLayout = [15, 85],
   defaultCollapsed = false,
   navCollapsedSize,
 }: LayoutProps & { children: React.ReactNode }) {
@@ -93,7 +94,10 @@ export default function InventoryLayout({
           </ScrollArea>
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={contentSize}>{children}</ResizablePanel>
+        <ResizablePanel defaultSize={contentSize}>
+          <Header />
+          <ScrollArea className="h-[calc(100vh-48px)]">{children}</ScrollArea>
+        </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>
   );

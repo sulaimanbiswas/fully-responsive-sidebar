@@ -33,7 +33,7 @@ interface NavProps {
 export function Nav({ links, isCollapsed }: NavProps) {
   // State to track which dropdown is open
   const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(
-    null
+    null,
   );
 
   // Function to handle dropdown toggle
@@ -58,7 +58,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                       buttonVariants({ variant: link.variant, size: "icon" }),
                       "h-9 w-9",
                       link.variant === "default" &&
-                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white"
+                        "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
                     )}
                   >
                     <link.icon className="h-4 w-4" />
@@ -84,38 +84,44 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   className={cn(
                     buttonVariants({ variant: link.variant, size: "sm" }),
                     link.variant === "default" &&
-                      "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white rounded-none",
-                    "flex justify-start items-center cursor-pointer"
+                      "rounded-none dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
+                    "flex cursor-pointer items-center justify-start",
                   )}
                 >
-                  <link.icon className="mr-2 h-4 w-4" />
-                  {link.title}
-                  {link.label && (
-                    <span
-                      className={cn(
-                        "ml-auto",
-                        link.variant === "default" &&
-                          "text-background dark:text-white"
+                  <div className="flex w-full items-center justify-between">
+                    <div className="flex items-center justify-start">
+                      <link.icon className="mr-2 h-4 w-4" />
+                      {link.title}
+                    </div>
+                    <div className="flex items-center justify-start">
+                      {link.label && (
+                        <span
+                          className={cn(
+                            "ml-auto",
+                            link.variant === "default" &&
+                              "text-background dark:text-white",
+                          )}
+                        >
+                          {link.label}
+                        </span>
                       )}
-                    >
-                      {link.label}
-                    </span>
-                  )}
-                  {link.dropdownItems && (
-                    <ChevronDown
-                      className={cn("ml-2 h-4 w-4 transition-transform", {
-                        "rotate-180": openDropdownIndex === index,
-                      })}
-                    />
-                  )}
+                      {link.dropdownItems && (
+                        <ChevronDown
+                          className={cn("ml-2 h-4 w-4 transition-transform", {
+                            "rotate-180": openDropdownIndex === index,
+                          })}
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
                 {link.dropdownItems && (
                   <div
                     className={cn(
-                      "mt-1 space-y-1 border-l-2 border-primary transition-all duration-300 ease-in-out bg-background",
+                      "ml-5 mt-1 space-y-1 border-l-2 border-primary bg-background transition-all duration-300 ease-in-out",
                       openDropdownIndex === index
-                        ? "opacity-100 transform translate-y-0"
-                        : "max-h-0 opacity-0 transform -translate-y-2"
+                        ? "translate-y-0 transform opacity-100"
+                        : "max-h-0 -translate-y-2 transform opacity-0",
                     )}
                   >
                     {link.dropdownItems.map((dropdownItem, i) => (
@@ -127,17 +133,17 @@ export function Nav({ links, isCollapsed }: NavProps) {
                             variant: dropdownItem.variant,
                             size: "sm",
                           }),
-                          "flex items-center gap-2 rounded-none pl-6"
+                          "flex items-center justify-start gap-2 rounded-none pl-0",
                         )}
                       >
-                        <dropdownItem.icon className="h-4 w-4" />
+                        <dropdownItem.icon className="h-4 w-4 text-primary" />
                         {dropdownItem.title}
                         {dropdownItem.label && (
                           <span
                             className={cn(
                               "ml-auto",
                               dropdownItem.variant === "default" &&
-                                "text-background dark:text-white"
+                                "text-background dark:text-white",
                             )}
                           >
                             {dropdownItem.label}
