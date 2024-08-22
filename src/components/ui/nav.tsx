@@ -141,7 +141,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
                     "flex cursor-pointer items-center justify-start",
                   )}
                 >
-                  <div className="flex w-full items-center justify-between">
+                  <Link
+                    href={link.href}
+                    className="flex w-full items-center justify-between"
+                  >
                     <div className="flex items-center justify-start">
                       <link.icon className="mr-2 h-4 w-4" />
                       {link.title}
@@ -166,7 +169,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                         />
                       )}
                     </div>
-                  </div>
+                  </Link>
                 </div>
                 {link.dropdownItems && (
                   <div

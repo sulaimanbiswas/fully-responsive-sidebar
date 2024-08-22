@@ -18,11 +18,15 @@ import {
   Users,
 } from "lucide-react";
 
+import { usePathname } from "next/navigation";
+
 type SidebarProps = {
   isCollapsed: boolean;
 };
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
+  const pathname = usePathname();
+
   return (
     <>
       <Nav
@@ -30,9 +34,9 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         links={[
           {
             title: "Dashboard",
-            href: "/dashboard",
+            href: "/inventory",
             icon: House,
-            variant: "default",
+            variant: pathname === "/inventory" ? "default" : "ghost",
           },
           {
             title: "User Management",
@@ -43,24 +47,27 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             dropdownItems: [
               {
                 title: "Users",
-                href: "/",
+                href: "/inventory/users",
                 label: "",
                 icon: Minus,
-                variant: "ghost",
+                variant: pathname === "/inventory/users" ? "default" : "ghost",
               },
               {
                 title: "Roles",
-                href: "/",
+                href: "/inventory/roles",
                 label: "",
                 icon: Minus,
-                variant: "ghost",
+                variant: pathname === "/inventory/roles" ? "default" : "ghost",
               },
               {
                 title: "Sales Commission Agents",
-                href: "/",
+                href: "/inventory/sales-commission-agents",
                 label: "",
                 icon: Minus,
-                variant: "ghost",
+                variant:
+                  pathname === "/inventory/sales-commission-agents"
+                    ? "default"
+                    : "ghost",
               },
             ],
           },
