@@ -64,70 +64,54 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 </PopoverTrigger>
                 <PopoverContent
                   side="right"
-                  className="flex w-64 flex-col gap-4 border-l-2"
-                  onClick={() => handleToggleDropdown(index)}
+                  className="absolute left-0 top-0 flex w-64 flex-col gap-4 border-l-2 bg-background"
                 >
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <div className="flex items-center justify-between gap-4">
-                        <span>{link.title}</span>
-                        <div className="">
-                          {link.label && (
-                            <span className="ml-auto text-muted-foreground">
-                              {link.label}
-                            </span>
-                          )}
-                          {link.dropdownItems && (
-                            <ChevronDown
-                              // if popover is open, rotate the icon
-                              // else, don't rotate
-                              className={cn("h-4 w-4 transition-transform", {
-                                "rotate-180": openDropdownIndex === index,
-                              })}
-                            />
-                          )}
-                        </div>
-                      </div>
-                    </PopoverTrigger>
-                    <PopoverContent className="ml-0 mt-3 w-64" side="bottom">
-                      {link.dropdownItems && (
-                        <ScrollArea
+                  <div className="flex items-center justify-between gap-4">
+                    <span>{link.title}</span>
+                    <div className="">
+                      {link.label && (
+                        <span className="ml-auto font-semibold text-muted-foreground">
+                          {link.label}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {link.dropdownItems && (
+                    <ScrollArea
+                      className={cn(
+                        link.dropdownItems.length > 5 ? "h-40" : "",
+                        "space-y-1 border-l-2 border-primary bg-background",
+                      )}
+                    >
+                      {link.dropdownItems.map((dropdownItem, i) => (
+                        <Link
+                          key={i}
+                          href={dropdownItem.href}
                           className={cn(
-                            link.dropdownItems.length > 5 ? "h-40" : "",
-                            "space-y-1 border-l-2 border-primary bg-background",
+                            buttonVariants({
+                              variant: dropdownItem.variant,
+                              size: "sm",
+                            }),
+                            "flex items-center justify-start gap-2 rounded-none pl-0",
                           )}
                         >
-                          {link.dropdownItems.map((dropdownItem, i) => (
-                            <Link
-                              key={i}
-                              href={dropdownItem.href}
+                          <dropdownItem.icon className="h-4 w-4 text-primary" />
+                          {dropdownItem.title}
+                          {dropdownItem.label && (
+                            <span
                               className={cn(
-                                buttonVariants({
-                                  variant: dropdownItem.variant,
-                                  size: "sm",
-                                }),
-                                "flex items-center justify-start gap-2 rounded-none pl-0",
+                                "ml-auto",
+                                dropdownItem.variant === "default" &&
+                                  "text-background dark:text-white",
                               )}
                             >
-                              <dropdownItem.icon className="h-4 w-4 text-primary" />
-                              {dropdownItem.title}
-                              {dropdownItem.label && (
-                                <span
-                                  className={cn(
-                                    "ml-auto",
-                                    dropdownItem.variant === "default" &&
-                                      "text-background dark:text-white",
-                                  )}
-                                >
-                                  {dropdownItem.label}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
-                        </ScrollArea>
-                      )}
-                    </PopoverContent>
-                  </Popover>
+                              {dropdownItem.label}
+                            </span>
+                          )}
+                        </Link>
+                      ))}
+                    </ScrollArea>
+                  )}
                 </PopoverContent>
               </Popover>
             ) : (
