@@ -38,7 +38,7 @@ export default function InventoryLayout({
         </div>
         <div className="flex-1 transition-all duration-300 ease-in-out">
           <Header setIsCollapsed={setIsCollapsed} isCollapsed={isCollapsed} />
-          <ScrollArea className="h-[calc(100vh-48px)] px-3">
+          <ScrollArea className="h-[calc(100vh-48px)] p-3">
             {children}
           </ScrollArea>
         </div>

@@ -16,9 +16,16 @@ export default function Header({ setIsCollapsed, isCollapsed }: Props) {
           className="flex h-8 w-8 transform items-center justify-center rounded-md ring-1 ring-white/10 transition-colors duration-200 ease-in-out hover:bg-white/10"
         >
           {isCollapsed ? (
-            <PanelLeftOpen className="h-5 w-5" />
+            <>
+              {" "}
+              <PanelLeftOpen className="hidden h-5 w-5 md:block" />
+              <PanelLeftClose className="block h-5 w-5 md:hidden" />
+            </>
           ) : (
-            <PanelLeftClose className="h-5 w-5" />
+            <>
+              <PanelLeftClose className="hidden h-5 w-5 md:block" />
+              <PanelLeftOpen className="block h-5 w-5 md:hidden" />
+            </>
           )}
         </button>
 
