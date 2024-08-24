@@ -45,7 +45,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
   return (
     <div
       data-collapsed={isCollapsed}
-      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:gap-1 data-[collapsed=true]:py-2 dark:bg-muted dark:text-muted-foreground"
+      className="group flex min-h-[calc(100vh-48px)] flex-col gap-4 py-2 data-[collapsed=true]:gap-1 data-[collapsed=true]:py-2 dark:border-muted dark:bg-muted dark:text-muted-foreground"
     >
       <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {links.map((link, index) => (
@@ -71,7 +71,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 </PopoverTrigger>
                 <PopoverContent
                   side="right"
-                  className="absolute left-0 top-0 flex w-64 flex-col gap-4 border-l-2 bg-background"
+                  className="flex w-64 flex-col gap-4 border-l-2 bg-background"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <span>{link.title}</span>
@@ -86,7 +86,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   {link.dropdownItems && (
                     <ScrollArea
                       className={cn(
-                        link.dropdownItems.length > 5 ? "h-40" : "",
+                        link.dropdownItems.length > 5 ? "h-44" : "",
                         "space-y-1 border-l-2 border-primary bg-background",
                       )}
                     >
