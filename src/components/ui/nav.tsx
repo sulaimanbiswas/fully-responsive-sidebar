@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 interface NavProps {
   isCollapsed: boolean;
@@ -32,12 +33,11 @@ interface NavProps {
 }
 
 export function Nav({ links, isCollapsed }: NavProps) {
-  // State to track which dropdown is open
+  const pathName = usePathname();
   const [openDropdownIndex, setOpenDropdownIndex] = useState<number | null>(
     null,
   );
 
-  // Function to handle dropdown toggle
   const handleToggleDropdown = (index: number) => {
     setOpenDropdownIndex(openDropdownIndex === index ? null : index);
   };
@@ -45,7 +45,7 @@ export function Nav({ links, isCollapsed }: NavProps) {
   return (
     <div
       data-collapsed={isCollapsed}
-      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:py-2"
+      className="group flex flex-col gap-4 py-2 data-[collapsed=true]:gap-1 data-[collapsed=true]:py-2 dark:bg-muted dark:text-muted-foreground"
     >
       <nav className="grid gap-1 px-2 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
         {links.map((link, index) => (
@@ -56,7 +56,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
                   <Link
                     href={link.href}
                     className={cn(
-                      buttonVariants({ variant: link.variant, size: "icon" }),
+                      buttonVariants({
+                        variant: link.href === pathName ? "default" : "ghost",
+                        size: "icon",
+                      }),
                       "h-9 w-9",
                       link.variant === "default" &&
                         "dark:bg-muted dark:text-muted-foreground dark:hover:bg-muted dark:hover:text-white",
@@ -93,7 +96,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
                           href={dropdownItem.href}
                           className={cn(
                             buttonVariants({
-                              variant: dropdownItem.variant,
+                              variant:
+                                dropdownItem.href === pathName
+                                  ? "default"
+                                  : "ghost",
                               size: "sm",
                             }),
                             "flex items-center justify-start gap-2 rounded-none pl-0",
@@ -123,7 +129,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
                 <div
                   onClick={() => handleToggleDropdown(index)}
                   className={cn(
-                    buttonVariants({ variant: link.variant, size: "sm" }),
+                    buttonVariants({
+                      variant: link.href === pathName ? "default" : "ghost",
+                      size: "sm",
+                    }),
                     link.variant === "default" &&
                       "rounded-none dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white",
                     "flex cursor-pointer items-center justify-start",
@@ -175,7 +184,10 @@ export function Nav({ links, isCollapsed }: NavProps) {
                         href={dropdownItem.href}
                         className={cn(
                           buttonVariants({
-                            variant: dropdownItem.variant,
+                            variant:
+                              dropdownItem.href === pathName
+                                ? "default"
+                                : "ghost",
                             size: "sm",
                           }),
                           "flex items-center justify-start gap-2 rounded-none pl-0",
