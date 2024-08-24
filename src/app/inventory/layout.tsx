@@ -39,9 +39,9 @@ export default function InventoryLayout({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const minSize = isSmallScreen ? 60 : 16;
-  const maxSize = isSmallScreen ? 60 : 18;
-  const panelSize = isSmallScreen ? 60 : defaultLayout[0];
+  const minSize = isSmallScreen ? 70 : 16;
+  const maxSize = isSmallScreen ? 70 : 18;
+  const panelSize = isSmallScreen ? 70 : defaultLayout[0];
   const contentSize = isSmallScreen ? 40 : defaultLayout[1];
 
   return (
