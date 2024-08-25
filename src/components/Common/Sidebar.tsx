@@ -80,28 +80,28 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             dropdownItems: [
               {
                 title: "Suppliers",
-                href: "/",
+                href: "/inventory/contacts?type=suppliers",
                 label: "",
                 icon: Minus,
                 variant: "ghost",
               },
               {
                 title: "Customers",
-                href: "/",
+                href: "/inventory/contacts?type=customers",
                 label: "",
                 icon: Minus,
                 variant: "ghost",
               },
               {
                 title: "Customer Groups",
-                href: "/",
+                href: "/inventory/contacts?type=customer-groups",
                 label: "",
                 icon: Minus,
                 variant: "ghost",
               },
               {
                 title: "Import Contacts",
-                href: "/",
+                href: "/inventory/contacts?type=import-contacts",
                 label: "",
                 icon: Minus,
                 variant: "ghost",

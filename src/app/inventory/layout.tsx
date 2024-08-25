@@ -13,6 +13,7 @@ export default function InventoryLayout({
   children,
 }: Props & { children: React.ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
+
   return (
     <>
       <div className={"flex h-screen w-screen overflow-hidden"}>
