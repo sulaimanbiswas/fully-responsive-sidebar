@@ -1,7 +1,3 @@
-Certainly! Here's the updated `README.md` file with the inclusion of TypeScript:
-
----
-
 # Fully Responsive Sidebar
 
 This project provides a fully responsive sidebar, built with Next.js, TypeScript, Tailwind CSS, ShadCN, and Lucide Icons. It is highly customizable and designed to work seamlessly across different devices, ensuring a consistent user experience whether on desktop or mobile.
