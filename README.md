@@ -1,6 +1,10 @@
+Certainly! Here's the updated `README.md` file with the inclusion of TypeScript:
+
+---
+
 # Fully Responsive Sidebar
 
-This project provides a fully responsive sidebar, built using Next.js, Tailwind CSS, ShadCN, and Lucide Icons. It is highly customizable and designed to work seamlessly across different devices, ensuring a consistent user experience whether on desktop or mobile.
+This project provides a fully responsive sidebar, built with Next.js, TypeScript, Tailwind CSS, ShadCN, and Lucide Icons. It is highly customizable and designed to work seamlessly across different devices, ensuring a consistent user experience whether on desktop or mobile.
 
 ## Table of Contents
 
@@ -16,12 +20,12 @@ This project provides a fully responsive sidebar, built using Next.js, Tailwind 
 
 ## Demo
 
-You can view a live demo of the responsive sidebar [here](https://sulaimanbiswas.github.io/fully-responsive-sidebar).
+You can view a live demo of the responsive sidebar [here](https://fully-responsive-sidebar.vercel.app/inventory).
 
 ## Features
 
 - **Responsive Design**: The sidebar adapts to different screen sizes using Tailwind CSS, providing a consistent experience across devices.
-- **Next.js Integration**: Built with Next.js, allowing for server-side rendering and static site generation.
+- **Next.js with TypeScript**: Built using Next.js and TypeScript, enabling strong typing and modern web development practices.
 - **ShadCN UI Components**: Utilizes ShadCN components for a sleek and modern design.
 - **Lucide Icons**: Incorporates Lucide Icons for a clean and lightweight icon set.
 - **Toggle Button**: A built-in toggle button allows the sidebar to be shown or hidden, enhancing usability on smaller screens.
@@ -31,6 +35,7 @@ You can view a live demo of the responsive sidebar [here](https://sulaimanbiswas
 ## Technologies Used
 
 - **Next.js**: Framework for server-side rendering and static site generation.
+- **TypeScript**: Strongly typed programming language that builds on JavaScript.
 - **Tailwind CSS**: Utility-first CSS framework for custom designs.
 - **ShadCN**: Component library for building user interfaces.
 - **Lucide Icons**: Icon library offering a wide range of lightweight icons.
@@ -81,7 +86,7 @@ You can view a live demo of the responsive sidebar [here](https://sulaimanbiswas
 
 ### Adding/Removing Items
 
-- Add or remove menu items in the sidebar by modifying the JSX structure in the Next.js components.
+- Add or remove menu items in the sidebar by modifying the JSX structure in the Next.js TypeScript components.
 
 ### Mobile Responsiveness
 
